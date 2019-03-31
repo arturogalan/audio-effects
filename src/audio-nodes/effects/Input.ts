@@ -42,7 +42,11 @@ export class Input extends SingleAudioNode {
         return new Promise((resolve, reject) =>{
             if (HasGetUserMedia) {
                 navigator.getUserMedia({
-                    audio: true
+                  audio: {
+                    echoCancellation: false, 
+                    mozNoiseSuppression: false, 
+                    mozAutoGainControl: false  
+                  } 
                 }, stream => {
                     this.input = stream;
                     this._hasPermissions = true;
